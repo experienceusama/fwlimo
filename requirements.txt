@@ -4,6 +4,9 @@ django-environ==0.11.2
 django-phonenumber-field==8.0.0
 django-rest-framework==0.1.0
 djangorestframework==3.15.2
+gunicorn==23.0.0
+packaging==24.2
 phonenumbers==8.13.51
 sqlparse==0.5.2
 typing_extensions==4.12.2
+whitenoise==6.8.2
