@@ -11,10 +11,16 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+env = environ.Env()
+environ.Env.read_env()  # This reads the .env file
+
+DEBUG = env.bool('DEBUG', default=False)
+SECRET_KEY = env('SECRET_KEY')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -76,11 +82,10 @@ WSGI_APPLICATION = 'fwlimo.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': env('DATABASE_ENGINE', default='django.db.backends.sqlite3'),
+        'NAME': BASE_DIR / env('DATABASE_NAME', default='db.sqlite3'),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
