@@ -3,7 +3,7 @@ from users.models import CustomUser
 from .serializers import CarSerializer, MakeModelSerializer
 from rest_framework import generics
 from django.db import transaction
-from rest_framework import status
+from rest_framework import status, viewsets
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from django.contrib.auth import get_user_model
@@ -12,7 +12,7 @@ from .serializers import UserSerializer, ReservationSerializer, CategorySerializ
 from django.core.exceptions import ObjectDoesNotExist
 
 User = get_user_model()
-class CarListView(generics.ListAPIView):
+class CarViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Car.objects.all()
     serializer_class = CarSerializer
 
