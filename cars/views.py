@@ -13,7 +13,7 @@ from django.core.exceptions import ObjectDoesNotExist
 
 User = get_user_model()
 class CarViewSet(viewsets.ReadOnlyModelViewSet):
-    queryset = Car.objects.all()
+    queryset = Car.objects.all().prefetch_related('images')
     serializer_class = CarSerializer
 
     def get_queryset(self):
@@ -21,9 +21,7 @@ class CarViewSet(viewsets.ReadOnlyModelViewSet):
         category = self.request.query_params.get('category', None)
         if category:
             queryset = queryset.filter(category__id=category)
-
         return queryset
-    
 
 
 class MakeModelListView(generics.ListAPIView):

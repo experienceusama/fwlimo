@@ -3,3 +3,4 @@ __pycache__/
 *.pyc
 /media/
 ddb.sqlite3
+db.sqlite3
