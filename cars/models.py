@@ -53,6 +53,7 @@ class Reservation(TimeStampedModel):
     reservation_date = models.DateField()
     reservation_time = models.TimeField()
     passengers = models.PositiveIntegerField()
+    car = models.ForeignKey(Car, related_name='car_reservations', on_delete=models.PROTECT, default=3)
 
     def __str__(self):
         return f"Reservation by {self.user}"

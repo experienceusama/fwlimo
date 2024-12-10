@@ -47,7 +47,7 @@ class MakeModelSerializer(serializers.Serializer):
 class ReservationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Reservation
-        fields = ['pickup_location', 'drop_off_location', 'reservation_date', 'reservation_time', 'passengers', 'user']
+        fields = ['pickup_location', 'drop_off_location', 'reservation_date', 'reservation_time', 'passengers', 'user', 'car']
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
