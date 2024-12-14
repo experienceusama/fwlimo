@@ -22,7 +22,7 @@ class ContactMessage(TimeStampedModel):
     first_name = models.CharField(max_length=100, null=True, blank=True)
     last_name = models.CharField(max_length=100, null=True, blank=True)
     email = models.EmailField()
-    mobile_number = PhoneNumberField(blank=False, null=False, unique=True)
+    mobile_number = PhoneNumberField(blank=False, null=False)
     message = models.TextField()
 
 
