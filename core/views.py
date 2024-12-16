@@ -1,11 +1,12 @@
 from rest_framework import generics
-from .models import City, NewsletterSubscription
-from .serializers import CitySerializer, ContactMessageSerializer, NewsletterSubscriptionSerializer
+from .models import City, NewsletterSubscription, SiteReview
+from .serializers import CitySerializer, ContactMessageSerializer, NewsletterSubscriptionSerializer, SiteReviewSerializer
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.permissions import AllowAny
+from rest_framework.generics import ListAPIView
 
 class CityListView(generics.ListAPIView):
     queryset = City.objects.all()
@@ -36,3 +37,8 @@ class NewsletterSubscribeAPIView(APIView):
             serializer.save()
             return Response({'message': 'Thank you for subscribing to our newsletter!'}, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+
+class SiteReviewListView(ListAPIView):
+    queryset = SiteReview.objects.all()
+    serializer_class = SiteReviewSerializer

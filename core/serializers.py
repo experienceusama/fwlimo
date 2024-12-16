@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import City, ContactMessage, NewsletterSubscription
+from .models import City, ContactMessage, NewsletterSubscription, SiteReview
 from django.contrib.auth import get_user_model
 
 
@@ -33,3 +33,10 @@ class NewsletterSubscriptionSerializer(serializers.ModelSerializer):
         email = validated_data['email']
         user = User.objects.filter(email=email).first()
         return NewsletterSubscription.objects.create(email=email, user=user)
+    
+
+class SiteReviewSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SiteReview
+        fields = ['id', 'rating', 'review_text', 'reviewer_name', 'review_date']
+        read_only_fields = ['id', 'review_date'] 
