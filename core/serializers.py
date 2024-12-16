@@ -38,5 +38,4 @@ class NewsletterSubscriptionSerializer(serializers.ModelSerializer):
 class SiteReviewSerializer(serializers.ModelSerializer):
     class Meta:
         model = SiteReview
-        fields = ['id', 'rating', 'review_text', 'reviewer_name', 'review_date']
-        read_only_fields = ['id', 'review_date'] 
+        fields = ['id', 'rating', 'title', 'description', 'name', 'image']
